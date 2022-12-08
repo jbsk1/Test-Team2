@@ -35,7 +35,8 @@ public class ClickObj : MonoBehaviour
 
     IEnumerator _Particle()
     {
-        GameObject particle = Instantiate(this.particle, Input.mousePosition, Quaternion.identity, gameObject.transform);
+        Vector2 pos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        GameObject particle = Instantiate(this.particle, pos, Quaternion.identity, gameObject.transform);
         TMP_Text pText = particle.GetComponent<TMP_Text>();
         
         for(int i = 0; i < pFrameTime; i++)
