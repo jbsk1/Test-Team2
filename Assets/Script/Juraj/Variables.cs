@@ -17,9 +17,18 @@ public class Variables : MonoBehaviour
         instance = this;
     }
 
+    void Start()
+    {
+        StartCoroutine(ChangeExchange());
+    }
+
     IEnumerator ChangeExchange()
+    {
+    while(true)
     {
         yield return new WaitForSeconds(5);
         exchange = Random.Range(0, exchangeBoost + 5);
+        StartCoroutine(ChangeExchange());
+    }
     }
 }
