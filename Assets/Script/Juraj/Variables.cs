@@ -9,9 +9,17 @@ public class Variables : MonoBehaviour
     public int oil = 0;
     public int oilperclick = 1;
     public float boostWorkers = 1;
+    public int exchange;
+    public int exchangeBoost;
 
     void Awake()
     {
         instance = this;
+    }
+
+    IEnumerator ChangeExchange()
+    {
+        yield return new WaitForSeconds(5);
+        exchange = Random.Range(0, exchangeBoost + 5);
     }
 }

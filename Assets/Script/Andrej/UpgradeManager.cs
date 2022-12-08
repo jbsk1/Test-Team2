@@ -10,6 +10,7 @@ public class UpgradeManager : MonoBehaviour
     public Platform[] platforms;
     public Slave slave;
     public Whiper whiper;
+    public Exchanger exchanger;
 
 
     
@@ -49,7 +50,17 @@ public class UpgradeManager : MonoBehaviour
         if (Variables.instance.money >= costs[1])
         {
             Variables.instance.money -= costs[1];
+            Worker v = Instantiate(exchanger, platforms[2].transform.position, Quaternion.identity);
+            platforms[2].workers.Add(v);
+            v.platform = platforms[2];
+            costs[1] += rise[1];
+            v.transform.parent = platforms[2].transform;
         }
+    }
+
+    public void Exchange()
+    {
+        Variables.instance.money += Variables.instance.exchange * Variables.instance.oil;
     }
 
     public void BuyWhiper()
