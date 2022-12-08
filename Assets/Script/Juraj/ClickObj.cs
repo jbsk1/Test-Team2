@@ -5,13 +5,15 @@ using TMPro;
 
 public class ClickObj : MonoBehaviour
 {
-    [SerializeField]GameObject particle;
+    GameObject particle;
     TMP_Text pText;
-    float pSpeed = 1;
-    int pFrameTime = 500;
+
+    [SerializeField]float pSpeed = 1;
+    [SerializeField]int pFrameTime = 500;
 
     void Awake()
     {
+        particle = (GameObject)Resources.Load("Prefabs/TextParticle");
         pText = particle.GetComponent<TMP_Text>();
     }
 
