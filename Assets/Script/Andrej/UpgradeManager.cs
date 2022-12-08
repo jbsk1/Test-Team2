@@ -9,6 +9,9 @@ public class UpgradeManager : MonoBehaviour
     public int[] rise = { 10, 20, 30, 40 };
     public Platform[] platforms;
     public Slave slave;
+    public Whiper whiper;
+
+
     
 
    
@@ -55,6 +58,11 @@ public class UpgradeManager : MonoBehaviour
         if (Variables.instance.money >= costs[2])
         {
             Variables.instance.money -= costs[2];
+            Worker v = Instantiate(whiper, platforms[1].transform.position, Quaternion.identity);
+            platforms[1].workers.Add(v);
+            v.platform = platforms[1];
+            costs[2] += rise[2];
+            v.transform.parent = platforms[1].transform;
         }
     }
 

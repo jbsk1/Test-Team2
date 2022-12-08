@@ -14,7 +14,7 @@ public class Slave :Worker
 
     IEnumerator Cicle()
     {
-        yield return new WaitForSeconds(generateRate);
+        yield return new WaitForSeconds(generateRate/Variables.instance.boostWorkers);
         Variables.instance.oil++;
         yield return  StartCoroutine(Cicle());
     }
