@@ -11,6 +11,7 @@ public class UpgradeManager : MonoBehaviour
     public Slave slave;
     public Whiper whiper;
     public Exchanger exchanger;
+    public int cap;
 
 
     
@@ -32,8 +33,9 @@ public class UpgradeManager : MonoBehaviour
 
     public void BuyVorker()
     {
-        if (Variables.instance.money >= costs[0])
+        if (Variables.instance.money >= costs[0]&& platforms[0].workers.Count<cap)
         {
+
             Variables.instance.money -= costs[0];
             Worker v = Instantiate(slave, platforms[0].transform.position, Quaternion.identity);
             platforms[0].workers.Add(v);
@@ -47,7 +49,7 @@ public class UpgradeManager : MonoBehaviour
 
     public void BuyExchanger()
     {
-        if (Variables.instance.money >= costs[1])
+        if (Variables.instance.money >= costs[1]&& platforms[2].workers.Count<cap)
         {
             Variables.instance.money -= costs[1];
             Worker v = Instantiate(exchanger, platforms[2].transform.position, Quaternion.identity);
@@ -61,12 +63,13 @@ public class UpgradeManager : MonoBehaviour
     public void Exchange()
     {
         Variables.instance.money += Variables.instance.exchange * Variables.instance.oil;
+        Variables.instance.oil = 0;
     }
 
     public void BuyWhiper()
     {
 
-        if (Variables.instance.money >= costs[2])
+        if (Variables.instance.money >= costs[2] && platforms[1].workers.Count < cap)
         {
             Variables.instance.money -= costs[2];
             Worker v = Instantiate(whiper, platforms[1].transform.position, Quaternion.identity);
