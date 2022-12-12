@@ -28,7 +28,6 @@ public class Variables : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         exchange = Random.Range(0, exchangeBoost + 5);
-        StartCoroutine(ChangeExchange());
     }
     }
 }
